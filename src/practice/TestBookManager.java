@@ -1,16 +1,20 @@
+package practice;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import practice.Book;
 import practice.BookManager;
 
 public class TestBookManager {
+	static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		menu();
 	}
 	
 	public static void menu() {
-		Scanner sc = new Scanner(System.in);
 		BookManager bm = new BookManager();
 		int mnum;
 		do {
@@ -27,10 +31,10 @@ public class TestBookManager {
 					+ "메뉴 번호 입력 : ");
 				mnum = sc.nextInt();
 			switch(mnum) {
-			case 1 : bm.addBook(book); break;
+			case 1 : Book book = inputBook(); bm.addBook(book); break;
 			case 2 : bm.sortedBookList(); break;
-			case 3 : bm.deleteBook(index); break;
-			case 4 : bm.searchBook(bTitle); break;
+			case 3 : String bName = inputBookTitle(); int index = bm.searchBook(bName); bm.deleteBook(index); break;
+			case 4 : bName = inputBookTitle(); bm.searchBook(bName); break;
 			case 5 : bm.displayAll(); break;
 			case 6 : return;
 			}
@@ -39,11 +43,25 @@ public class TestBookManager {
 	
 	public static Book inputBook() {
 		//Book 객체의 필드값을 키보드로 입력받아 초기화하고 객체 리턴
-		return null;
+		Book b = new Book();
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+		System.out.print("도서번호 : ");
+		b.setbNo(br.readLine());
+		System.out.print("도서분류코드(1.인문/2.자연과학/3.의료/4.기타) : ");
+		b.setCategory(Integer.parseInt(br.readLine()));
+		System.out.print("책제목 : ");
+		b.setTitle(br.readLine());
+		System.out.print("저자 : ");
+		b.setAuthor(br.readLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return b;
 	}
 	
 	public static String inputBookTitle() {
 		//삭제 또는 검색을 위한 도서 타이틀을 키보드로 입력받아 리턴
-		return null;
+		System.out.print("삭제할 도서명 : ");
+		return sc.nextLine();
 	}
 }
