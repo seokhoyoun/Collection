@@ -37,7 +37,7 @@ public class BoardMenu {
 			switch(mnum) {
 			case 1 : bm.writeBoard(); break;
 			case 2 : bm.displayAllList(); break;
-			case 3 : bm.deleteBoard(); break;
+			case 3 : bm.displayBoard(); break;
 			case 4 : bm.modifyTitle(); break;
 			case 5 : bm.modifyContent(); break;
 			case 6 : bm.deleteBoard(); break;

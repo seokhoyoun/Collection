@@ -20,7 +20,7 @@ public class Board implements Serializable{
 	public Board() {
 		
 	}
-
+	
 	public Board(int boardNo, String boardTitle, String boardWriter, Date boardDate, String boardContent,
 			int readCount) {
 		super();
@@ -79,7 +79,7 @@ public class Board implements Serializable{
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	
+	@Override
 	public String toString() {
 		// Date 미확인
 		return this.boardNo+" "+this.boardTitle+" "+this.boardWriter+" "+this.boardDate+" "+this.boardContent+" "+this.readCount;
