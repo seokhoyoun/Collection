@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Board implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3581754646070382939L;
 	// Field
 	private int boardNo;
 	private String boardTitle;
