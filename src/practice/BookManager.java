@@ -5,12 +5,11 @@ import java.util.Collections;
 
 public class BookManager {
 	// Field
-	private ArrayList bookList;
+	private ArrayList bookList = new ArrayList();
 	
 	// Constructor
 	public BookManager() {
 		//기본생성자 : bookList 객체 생성함
-		ArrayList<Book> bookList = new ArrayList<>();
 	}
 
 	public BookManager(ArrayList bookList) {
@@ -22,6 +21,8 @@ public class BookManager {
 	
 	public void addBook(Book book) {
 		//리스트에 객체 추가
+		bookList.add(book);
+		
 	}
 	
 	public void deleteBook(int index) {
@@ -48,8 +49,8 @@ public class BookManager {
 	public Book[] sortedBookList() {
 		// 해당 카테고리순 오름차순정렬해서 객체배열 리턴함
 		AscCategory acg = new AscCategory();
-		Collections.sort(bookList, acg);
-		return (Book[])bookList.toArray();
+		int[] br = Collections.sort(bookList, acg);
+	
 		
 	}
 	

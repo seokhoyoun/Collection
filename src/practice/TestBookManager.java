@@ -32,7 +32,7 @@ public class TestBookManager {
 				mnum = sc.nextInt();
 			switch(mnum) {
 			case 1 : bm.addBook(inputBook()); break;
-			case 2 : Book[] br = bm.sortedBookList(); bm.printBookList(br); break;
+			case 2 : Book[] br = bm.sortedBookList(); /*bm.printBookList(br);*/ break;
 			case 3 : String bName = inputBookTitle(); int index = bm.searchBook(bName); bm.deleteBook(index); break;
 			case 4 : bName = inputBookTitle(); index = bm.searchBook(bName);  bm.printBook(index); break;
 			case 5 : bm.displayAll(); break;

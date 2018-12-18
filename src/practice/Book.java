@@ -1,6 +1,12 @@
 package practice;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -830388153478364982L;
 	// Field
 	private String bNo; // 도서번호
 	private int category; // 도서분류코드(1.인문/2.자연과학/3.의료/4.기타)
