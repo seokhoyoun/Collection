@@ -88,7 +88,6 @@ public class BoardManager {
 	public void modifyContent() {
 		
 	}
-	
 	public void deleteBoard() {
 		
 	}
