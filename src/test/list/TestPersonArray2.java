@@ -10,6 +10,12 @@ public class TestPersonArray2 {
 		
 		list = addMethod();
 		printList(list);
+		System.out.println("---------------------------------------");
+		list.sort(new PointAscending());
+		printList(list);
+		System.out.println("---------------------------------------");
+		list.sort(new PointDescending());
+		printList(list);
 	}
 	
 	public static void printList(ArrayList<Person> list) {
@@ -23,9 +29,9 @@ public class TestPersonArray2 {
 
 	public static ArrayList<Person> addMethod() {
 		ArrayList<Person> list = new ArrayList<>();
-		list.add(new Person("홍길동",25,1234.5));
-		list.add(new Person("홍길순",27,134.5));
 		list.add(new Person("홍길현",22,1954.5));
+		list.add(new Person("김길동",25,1234.5));
+		list.add(new Person("박길순",27,134.5));
 		return list;
 	}
 
