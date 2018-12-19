@@ -150,18 +150,20 @@ public class BoardManager {
 	public void sortList(int item, boolean isDesc) {
 		if(isDesc) {
 			switch(item) {
-			case 1 : list.sort(new DescBoardNo()); System.out.println(list); break;
-			case 2 : list.sort(new DescBoardDate()); System.out.println(list); break;
-			case 3 : list.sort(new DescBoardTitle()); System.out.println(list); break;
+			case 1 : list.sort(new DescBoardNo()); break;
+			case 2 : list.sort(new DescBoardDate());  break;
+			case 3 : list.sort(new DescBoardTitle());  break;
 			}
 		}
 		else {
 			switch(item) {
-			case 1 : list.sort(new AscBoardNo()); System.out.println(list); break;
-			case 2 : list.sort(new AscBoardDate()); System.out.println(list); break;
-			case 3 : list.sort(new AscBoardTitle()); System.out.println(list);break;
+			case 1 : list.sort(new AscBoardNo());  break;
+			case 2 : list.sort(new AscBoardDate()); break;
+			case 3 : list.sort(new AscBoardTitle());break;
 			}
 		}
+		 System.out.println("정렬 완료!");
+		 
 	}
 	
 }
