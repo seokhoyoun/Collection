@@ -82,6 +82,6 @@ public class Board implements Serializable{
 	@Override
 	public String toString() {
 		// Date 미확인
-		return this.boardNo+" "+this.boardTitle+" "+this.boardWriter+" "+this.boardDate+" "+this.boardContent+" "+this.readCount;
+		return "번호 : "+this.boardNo+" \n"+"글 제목 : "+this.boardTitle+"\n"+"작성자 : "+this.boardWriter+"\n"+this.boardDate+"\n"+this.boardContent+"\n"+"조회수 : "+this.readCount;
 	}
 }

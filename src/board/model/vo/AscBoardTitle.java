@@ -2,12 +2,17 @@ package board.model.vo;
 
 import java.util.Comparator;
 
-public class AscBoardTitle implements Comparator{
+public class AscBoardTitle implements Comparator<Board>{
+
 
 	@Override
-	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compare(Board o1, Board o2) {
+		if(o1.getBoardTitle().compareTo(o2.getBoardTitle()) == 1)
+			return 1;
+		else if(o1.getBoardTitle().compareTo(o2.getBoardTitle()) == -1) 
+			return -1;
+		else
+			return 0;
 	}
 	
 }

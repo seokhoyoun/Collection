@@ -1,16 +1,19 @@
 package board.controller;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
-import board.model.vo.Board;
+import board.model.vo.*;
 
 public class BoardManager {
 	// Field
@@ -25,7 +28,6 @@ public class BoardManager {
 				list.add((Board) ois.readObject());
 			}
 		} catch (EOFException e) {
-			System.out.println("저장 완료");
 		} catch (FileNotFoundException e) {
 			System.out.println("생성된 파일이 없습니다.\n새 글을 작성해 주세요\n");
 		} catch (ClassNotFoundException e) {
@@ -53,7 +55,9 @@ public class BoardManager {
 		System.out.println("게시글 작성이 완료되었습니다.\n");
 	}
 	public void displayAllList() {
-		System.out.println(list.toString());
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).toString());
+		}
 	}
 	
 	public void displayBoard() {
@@ -86,22 +90,78 @@ public class BoardManager {
 	}
 	
 	public void modifyContent() {
-		
+		System.out.print("수정 할 글 번호 : ");
+		int index = sc.nextInt();
+		if(index > -1 && index < list.size()) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(list.get(index)); // 기존 내용 저장
+			System.out.println(list.get(index));
+			System.out.print("\n변경할 내용 (종료 exit): ");
+			sc.nextLine(); // 버퍼 제거용
+			String line = null;
+			while(!(line = sc.nextLine()).equals("exit")) {
+				sb.append(line).append("\n"); // 기존 내용에 추가
+			}
+			list.get(index).setBoardContent(sb.toString());
+			System.out.println("변경이 완료되었습니다.");
+		}
+		else 
+			System.out.println("해당 글 번호는 존재하지 않습니다.");
 	}
 	public void deleteBoard() {
-		
+		System.out.print("삭제할 글 번호 : ");
+		int index = sc.nextInt();
+		if(index > -1 && index < list.size()) {
+			System.out.println(list.get(index));
+			System.out.print("\n정말로 삭제하시겠습니까? (y/n) : ");
+			sc.nextLine(); // 버퍼 제거용
+			if(sc.nextLine().toUpperCase().charAt(0) == 'Y') {
+				list.remove(index);
+				System.out.println(index+"번 글의 삭제가 완료되었습니다.");
+			}
+		}
+		else 
+			System.out.println("해당 글 번호는 존재하지 않습니다.");
 	}
 	
 	public void searchBoard() {
-		
+		System.out.print("검색할 제목 : ");
+		String key = sc.nextLine();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getBoardTitle().contains(key)) {
+				System.out.println(list.get(i));
+			}
+		}
 	}
 	
 	public void saveListFile() {
-		
+		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("board_list.dat",true)))){
+			for(int i = 0; i < list.size(); i++) {
+				oos.writeObject(list.get(i));
+			}
+			System.out.println("저장이 완료 되었습니다.");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void sortList(int item, boolean isDesc) {
-		
+		if(isDesc) {
+			switch(item) {
+			case 1 : list.sort(new DescBoardNo()); System.out.println(list); break;
+			case 2 : list.sort(new DescBoardDate()); System.out.println(list); break;
+			case 3 : list.sort(new DescBoardTitle()); System.out.println(list); break;
+			}
+		}
+		else {
+			switch(item) {
+			case 1 : list.sort(new AscBoardNo()); System.out.println(list); break;
+			case 2 : list.sort(new AscBoardDate()); System.out.println(list); break;
+			case 3 : list.sort(new AscBoardTitle()); System.out.println(list);break;
+			}
+		}
 	}
 	
 }
