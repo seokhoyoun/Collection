@@ -141,9 +141,9 @@ public class BoardManager {
 			}
 			System.out.println("저장이 완료 되었습니다.");
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("새 파일을 저장합니다.");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("시스템 오류 발생. 다시 시작해주세요");
 		}
 	}
 	
