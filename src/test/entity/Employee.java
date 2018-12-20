@@ -18,15 +18,6 @@ public class Employee implements Serializable{
 		
 	}
 	
-	
-	
-	public Employee(String eName, String dept, int salary, double bonusPoint) {
-		super();
-		this.eName = eName;
-		this.dept = dept;
-		this.salary = salary;
-		this.bonusPoint = bonusPoint;
-	}
 
 
 	public Employee(int eld, String eName, String dept, int salary, double bonusPoint) {
