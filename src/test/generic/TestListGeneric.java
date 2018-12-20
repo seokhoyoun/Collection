@@ -21,7 +21,13 @@ public class TestListGeneric {
 		test.printList(list);
 	}
 	public void printList(ArrayList<String> list) {
-		// TODO Auto-generated method stub
+		/*for(int i = 0; i < list.size(); i++) {
+			String str = list.get(i);
+			System.out.println(str);
+		}*/
+		for(String e : list) {
+			System.out.println(e);
+		}
 		
 	}
 
