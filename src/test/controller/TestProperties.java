@@ -57,13 +57,8 @@ public class TestProperties {
 	}
 
 	public Employee[] readFile(Properties p) {
-		try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("EmpData.txt")))){
-			System.out.println(ois.readObject());
-			p.put(null, ois.readObject());
-		} catch (EOFException e) {
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		return null;
+		
 	}
 
 }
