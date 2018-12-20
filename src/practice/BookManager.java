@@ -71,8 +71,6 @@ public class BookManager {
 			br[i] = (Book) oar[i];
 		}*/
 		return br;
-	
-		
 	}
 	
 	public void printBookList(Book[] br) {
