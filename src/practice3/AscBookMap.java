@@ -1,13 +1,14 @@
 package practice3;
 
+import java.util.Comparator;
+
 import practice.Book;
 
-public class AscBookMap implements Comparable<Book>{
+public class AscBookMap implements Comparator<Book>{
 
 	@Override
-	public int compareTo(Book o) {
-		
-		return 0;
+	public int compare(Book o1, Book o2) {
+		return o1.getTitle().compareTo(o2.getTitle());
 	}
 
 	

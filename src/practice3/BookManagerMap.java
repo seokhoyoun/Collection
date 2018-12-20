@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -31,41 +32,43 @@ public class BookManagerMap {
 		booksMap.remove(key);
 	}
 	
-	public void searchBook(String bTitle) {
-		Set mset = booksMap.entrySet();
-		Iterator iter = mset.iterator();	
+	public String searchBook(String bTitle) {
+		Set<Entry<String, Book>> mset = booksMap.entrySet();
+		Iterator<Entry<String, Book>> iter = mset.iterator();	
 		while(iter.hasNext()) {
-			if(iter.next().equals(bTitle)) {
-				
+			Map.Entry<String, Book> entry = iter.next();
+			if(entry.getValue().getTitle().equals(bTitle)) {
+				return entry.getValue().getTitle(); 
 			}
-		}
+		} return null;
 	}
 	
 	public void displayAll() {
-		
+		Set<String> keys = booksMap.keySet();
+		Iterator<String> iter = keys.iterator();
+		while(iter.hasNext()) {
+			String key = iter.next();
+			System.out.println(booksMap.get(key));
+		}
 	}
 	
 	public Book[] sortedBookMap() {
-		Collection<Book> values = booksMap.values();
-		Iterator<Book> iter = values.iterator();
-		ArrayList<Book> list = new ArrayList<>();
-		while(iter.hasNext()) {
-			list.add(iter.next());
-		}
-		list.sort(new DesBookName());
-		for(int i = 0; i < list.size(); i++){
-			System.out.println(list.get(i).getTitle());
-		}
-		Book[] b = new Book[values.size()];
+		ArrayList<Book> list = new ArrayList<>(booksMap.values());
+		list.sort(new AscBookMap());
+		Book[] bar = new Book[list.size()];
+		list.toArray(bar);
+		return bar;
 		
-		return null;
 	}
 	
 	public void printBookMap(Book[] br) {
-		
+		for(Book e : br) {
+			System.out.println(e);
+		}
 	}
 	
 	public void printBook(String key) {
+		System.out.println(booksMap.get(key)); 
 		
 	}
 	

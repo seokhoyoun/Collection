@@ -14,21 +14,19 @@ public class TestBookManagerMap {
 		do {
 		System.out.print("	*** 도서 관리 프로그램 ***\r\n" + 
 				"\r\n" + 
-				"	1. 새 도서 추가	//addBook(inputBook() 이 리턴한 객체) 실행\r\n" + 
-				"	2. 도서정보 정렬후 출력 //sortedBookList() 실행 \r\n" + 
-				"			=> Book[] 리턴받아 printBookList(Book[]) 실행\r\n" + 
-				"	3. 도서 삭제	//deleteBook(삭제할 인덱스) 실행\r\n" + 
-				"	4. 도서 검색출력	//searchBook(검색할 도서명) 실행 \r\n" + 
-				"			=> index 리턴받아 printBook(index) 실행\r\n" + 
-				"	5. 전체 출력	//displayAll() 실행\r\n" + 
+				"	1. 새 도서 추가	\r\n" + 
+				"	2. 도서 정보 정렬 후 출력 \r\n" + 
+				"	3. 도서 삭제	\r\n" + 
+				"	4. 도서 검색 \r\n" + 
+				"	5. 전체 출력\r\n" + 
 				"	6. 끝내기\n"
 				+ "	번호 입력 : ");
 			mnum = sc.nextInt();
 		switch(mnum) {	
 		case 1 : bm.putBook(inputBook()); break;
-		case 2 : bm.sortedBookMap(); break;
-		case 3 : //bm.removeBook(key); break;
-		case 4 : //bm.searchBook(); break;
+		case 2 : bm.printBookMap(bm.sortedBookMap()); break;
+		case 3 : bm.removeBook(bm.searchBook(inputBookTitle())); break;
+		case 4 : bm.searchBook(inputBookTitle()); break;
 		case 5 : bm.displayAll(); break;
 		case 6 : return;
 		}
@@ -62,6 +60,12 @@ public class TestBookManagerMap {
 		System.out.println("새로운 도서 저장이 완료되었습니다.");
 		return b;
 		
+	}
+	
+	private static String inputBookTitle() {
+		// 삭제 또는 검색을 위한 도서 타이틀을 키보드로 입력받아 리턴
+		System.out.print("도서 제목 : ");
+		return new Scanner(System.in).nextLine();
 	}
 
 }
