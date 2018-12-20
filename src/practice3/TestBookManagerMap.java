@@ -28,7 +28,7 @@ public class TestBookManagerMap {
 		case 1 : bm.putBook(inputBook()); break;
 		case 2 : bm.sortedBookMap(); break;
 		case 3 : //bm.removeBook(key); break;
-		case 4 : bm.searchBook(); break;
+		case 4 : //bm.searchBook(); break;
 		case 5 : bm.displayAll(); break;
 		case 6 : return;
 		}

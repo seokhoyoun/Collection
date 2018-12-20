@@ -32,7 +32,13 @@ public class BookManagerMap {
 	}
 	
 	public void searchBook(String bTitle) {
-		 ent = booksMap.entrySet(); 
+		Set mset = booksMap.entrySet();
+		Iterator iter = mset.iterator();	
+		while(iter.hasNext()) {
+			if(iter.next().equals(bTitle)) {
+				
+			}
+		}
 	}
 	
 	public void displayAll() {
