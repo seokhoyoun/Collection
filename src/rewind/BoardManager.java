@@ -89,7 +89,13 @@ public class BoardManager {
 		System.out.println(list.get(snum));
 		System.out.println("정말로 삭제하시겠습니까? (y/n) : ");
 		if(sc.nextLine().toUpperCase().charAt(0) == 'Y') {
-			
+			list.remove(snum);
 		}
+		System.out.println(snum+"번 글이 삭제되었습니다.");
+	}
+
+	public void searchBoard() {
+		System.out.print("검색 할 제목");
+		String Title = sc.nextLine();
 	}
 }

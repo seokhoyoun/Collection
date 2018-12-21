@@ -32,7 +32,7 @@ public class TestProperties {
 		test.printConsole(prop);
 		test.saveEmpXML(emp);
 		
-		HashMap<Integer,Employee> hm = new HashMap<>();
+		/*HashMap<Integer,Employee> hm = new HashMap<>();
 		hm.put(20190417, new Employee(20190417,"홍길동","재정부",38000000,0.2));
 		hm.put(20170212, new Employee(20170212,"오길현","기획부",32000000,0.2));
 		hm.put(20160602, new Employee(20160602,"김길순","편집부",33000000,0.2));
@@ -51,7 +51,7 @@ public class TestProperties {
 			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 		
@@ -97,6 +97,7 @@ public class TestProperties {
 	public Employee[] readFile(Properties p) {
 		try {
 			p.load(new FileReader("empData.txt"));
+			p.list(System.out);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
