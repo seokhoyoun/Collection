@@ -1,14 +1,14 @@
-package board.model.vo;
+package rewind;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Board implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3581754646070382939L;
-	// Field
+	private static final long serialVersionUID = 829213087641148368L;
 	private int boardNo;
 	private String boardTitle;
 	private String boardWriter;
@@ -81,8 +81,8 @@ public class Board implements Serializable{
 	}
 	@Override
 	public String toString() {
-		// Date 미확인
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return "번호 : "+this.boardNo+" \n"+"글 제목 : "+this.boardTitle+"\n"+"작성자 : "
-				+this.boardWriter+"\n"+this.boardDate+"\n조회수 : "+this.readCount+"\n"+this.boardContent;
+				+this.boardWriter+"\n"+"조회수 : "+this.readCount+"\n"+sdf.format(boardDate)+"\n"+this.boardContent;
 	}
 }

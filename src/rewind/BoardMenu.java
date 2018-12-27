@@ -2,8 +2,6 @@ package rewind;
 
 import java.util.Scanner;
 
-import board.controller.BoardManager;
-
 public class BoardMenu {
 	// Field
 	private Scanner sc = new Scanner(System.in);
@@ -28,14 +26,13 @@ public class BoardMenu {
 				"	7. 게시글 검색		\r\n" + 
 				"	8. 파일에 저장하기	\r\n" + 
 				"	9. 정렬하기	\r\n" + 
-				"	9. 끝내기		\n" + 
-				"\r\n" + 
+				"	0. 끝내기		\n" + 
 				"	메뉴 번호 선택 : ");
 				mnum = sc.nextInt();
 				
 			switch(mnum) {
 			case 1 : bm.writeBoard(); break;
-			case 2 : bm.displayAllList(); break;
+			case 2 : bm.displayAll(); break;
 			case 3 : bm.displayBoard(); break;
 			case 4 : bm.modifyTitle(); break;
 			case 5 : bm.modifyContent(); break;
@@ -61,7 +58,6 @@ public class BoardMenu {
 					"	5. 글제목순 오름차순정렬\r\n" + 
 					"	6. 글제목순 내림차순정렬\r\n" + 
 					"	7. 이전 메뉴로 이동	\r\n" + 
-					"\r\n" + 
 					"	메뉴 번호 : ");
 				mnum = sc.nextInt();
 			switch(mnum) {
