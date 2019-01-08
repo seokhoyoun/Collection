@@ -41,10 +41,10 @@ public class Run {
 		
 		//6.get(int index)
 		Music m = list.get(0);
-		String str = list.get(3).toString();
+//		String str = list.get(3).toString();
 		
 		System.out.println(m);
-		System.out.println(str);
+//		System.out.println(str);
 		
 		//7. contains(Object o)
 		System.out.println(list.contains(new Music("지코","artist")));
@@ -63,5 +63,14 @@ public class Run {
 		//11. clear() : 전체 삭제
 		list.clear();
 		System.out.println(list.isEmpty());
+		
+		// 반복문 사용
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+		for(Music e : list) {
+			System.out.println(e);
+		}
+		
 	}
 }
