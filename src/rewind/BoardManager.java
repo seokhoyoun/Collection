@@ -142,7 +142,8 @@ public class BoardManager {
 			switch(item) {
 			case 1 : list.sort(new AscBoardNo());
 			case 2 : list.sort(new AscBoardDate());
-			case 3 : list.sort(new AscBoardTitle());
+			case 3:
+				list.sort(new AscBoardTitle());
 			}
 		}
 	}
