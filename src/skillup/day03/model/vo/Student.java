@@ -51,6 +51,25 @@ public class Student implements Comparable<Student>{
 		return this.age - o.age;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + score;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Student other = (Student) obj;
+		if(this.name.equals(other.name) && this.age == other.age && this.score == other.score)
+			return true;
+		else
+			return false;
+	}
+
 	
 	
 	
