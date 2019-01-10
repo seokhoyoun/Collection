@@ -1,5 +1,6 @@
 package skillup.day03.run;
 
+import java.util.Iterator;
 import java.util.TreeSet;
 
 import skillup.day03.model.vo.Student;
@@ -22,8 +23,16 @@ public class TreeSetTest {
 		ts.add(stu5);
 		
 		System.out.println(ts);
-		
 		// treeset을 사용하려면 comparable 인터페이스를 구현해야한다.
+		
+		Iterator<Student> it = ts.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
+		Iterator<Student> it2 = ts.descendingIterator();
+		while(it2.hasNext()) {
+			System.out.println(it2.next());
+		}
 		
 		
 		
