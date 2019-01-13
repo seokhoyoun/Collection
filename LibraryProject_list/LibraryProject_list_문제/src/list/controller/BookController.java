@@ -6,56 +6,71 @@ import list.model.vo.Book;
 
 public class BookController {
 	
-	// µµ¼­µéÀ»  ´ã°í ÀÖ´Â bookList
+	// ë„ì„œë“¤ì„  ë‹´ê³  ìˆëŠ” bookList
 	private ArrayList<Book> bookList = new ArrayList<Book>();
 	
 	{
-		// ÃÊ±â°ª 4°³Á¤µµ Ãß°¡
-		bookList.add(new Book("ÀÚ¹ÙÀÇ Á¤¼®", "È«±æµ¿", "±âÅ¸", 20000));
-		bookList.add(new Book("C¾ğ¾î", "±è¸»¶Ë", "±âÅ¸", 15000));
-		bookList.add(new Book("±â¼úÇâ»ó µµ¿òÀÌ µÇ¾ú³ª¿ä", "°­º¸¶÷", "ÀÎ¹®", 17500));
-		bookList.add(new Book("¼ö°í¸¹¾Ò¾î¿ä ¿©·¯ºĞ", "KH", "ÀÇ·á", 10000));
+		// ì´ˆê¸°ê°’ 4ê°œì •ë„ ì¶”ê°€
+		bookList.add(new Book("ìë°”ì˜ ì •ì„", "í™ê¸¸ë™", "ê¸°íƒ€", 20000));
+		bookList.add(new Book("Cì–¸ì–´", "ê¹€ë§ë˜¥", "ê¸°íƒ€", 15000));
+		bookList.add(new Book("ê¸°ìˆ í–¥ìƒ ë„ì›€ì´ ë˜ì—ˆë‚˜ìš”", "ê°•ë³´ëŒ", "ì¸ë¬¸", 17500));
+		bookList.add(new Book("ìˆ˜ê³ ë§ì•˜ì–´ìš” ì—¬ëŸ¬ë¶„", "KH", "ì˜ë£Œ", 10000));
 	}
 	
 	
 	public void insertBook(Book bk) {
 		/*
-		 * 1. Àü´Ş¹ŞÀº bk¸¦ bookList¿¡ "Ãß°¡ "
+		 * 1. ì „ë‹¬ë°›ì€ bkë¥¼ bookListì— "ì¶”ê°€ "
 		 */
+		bookList.add(bk);
+		
 	}
 	
 	
 	public ArrayList<Book> selectList(){
 		/*
-		 * 1. ÇØ´ç bookListÀÇ ÁÖ¼Ò °ª ¹İÈ¯
+		 * 1. í•´ë‹¹ bookListì˜ ì£¼ì†Œ ê°’ ë°˜í™˜
 		 */
 		
-		return null; 	// ÀÌ ºÎºĞ ¼öÁ¤ÇØ¾ßµÇ¿ä~! ¿ì¼±Àº null·Î ÇØ³ù¾î¿ä
+		return bookList; 	// ì´ ë¶€ë¶„ ìˆ˜ì •í•´ì•¼ë˜ìš”~! ìš°ì„ ì€ nullë¡œ í•´ë†¨ì–´ìš”
 	}
 	
 	
 	public ArrayList<Book> searchBook(String keyword){
 		/*
-		 * 1. °Ë»ö °á°ú ¸®½ºÆ®¸¦ ´ã¾ÆÁÙ ¸®½ºÆ®(ArrayList<Book> searchList) ¼±¾ğ ¹× »ı¼º
-		 * 2. ¹İº¹¹®À» ÅëÇØ bookListÀÇ Ã¥µé Áß Ã¥¸í¿¡ Àü´Ş¹ŞÀº keyword°¡ "Æ÷ÇÔ µÇ¾îÀÖ´Â °æ¿ì" --> HINT : Á¶°Ç½Ä ÀÛ¼ºÇÒ ¶§ String Å¬·¡½ºÀÇ contains ¸Ş¼Òµå »ç¿ëÇÏ¸é µÇ°ÚÁÒ?
-		 *    searchList¿¡ ÇØ´ç Ã¥ "Ãß°¡"ÇÏ±â 
-		 * 
-		 * 3. searchListÀÇ ÁÖ¼Ò °ª ¹İÈ¯
+		 * 1. ê²€ìƒ‰ ê²°ê³¼ ë¦¬ìŠ¤íŠ¸ë¥¼ ë‹´ì•„ì¤„ ë¦¬ìŠ¤íŠ¸(ArrayList<Book> searchList) ì„ ì–¸ ë° ìƒì„±
+		 * 2. ë°˜ë³µë¬¸ì„ í†µí•´ bookListì˜ ì±…ë“¤ ì¤‘ ì±…ëª…ì— ì „ë‹¬ë°›ì€ keywordê°€ "í¬í•¨ ë˜ì–´ìˆëŠ” ê²½ìš°" --> HINT : ì¡°ê±´ì‹ ì‘ì„±í•  ë•Œ String í´ë˜ìŠ¤ì˜ contains ë©”ì†Œë“œ ì‚¬ìš©í•˜ë©´ ë˜ê² ì£ ?
+		 *    searchListì— í•´ë‹¹ ì±… "ì¶”ê°€"í•˜ê¸° 
+		 * 3. searchListì˜ ì£¼ì†Œ ê°’ ë°˜í™˜
 		 */
+		ArrayList<Book> searchList = new ArrayList<>();
+		for(int i = 0; i < bookList.size(); i++) {
+			if(bookList.get(i).getTitle().contains(keyword)) {
+				searchList.add(bookList.get(i));
+			}
+		}
 		
-		return null;   // ÀÌ ºÎºĞ ¼öÁ¤ÇØ¾ßµÇ¿ä~! ¿ì¼±Àº null·Î ÇØ³ù¾î¿ä
+		return searchList;   // ì´ ë¶€ë¶„ ìˆ˜ì •í•´ì•¼ë˜ìš”~! ìš°ì„ ì€ nullë¡œ í•´ë†¨ì–´ìš”
 	}
 	
 	public Book deleteBook(String title, String author) {
 		/*
-		 * 1. »èÁ¦µÈ µµ¼­¸¦ ´ãÀ» Book°´Ã¼(Book remove) ¼±¾ğ ¹× null·Î ÃÊ±âÈ­
-		 * 2. ¹İº¹¹®À» ÅëÇØ bookListÀÇ Ã¥µé Áß Ã¥¸íÀÌ Àü´Ş¹ŞÀº title°ú µ¿ÀÏÇÏ°í, ÀúÀÚ¸íÀÌ Àü´Ş¹ŞÀº author¿Í µ¿ÀÏÇÑ °æ¿ì 
-		 *    ÇØ´ç ÀÎµ¦½ºÀÇ µµ¼­ "»èÁ¦"ÇÏ°í ºüÁ®³ª°¡±â (ÀÌ¶§ ÇØ´ç ÀÎµ¦½º µµ¼­¸¦ remove¿¡ ´ëÀÔ)
+		 * 1. ì‚­ì œëœ ë„ì„œë¥¼ ë‹´ì„ Bookê°ì²´(Book remove) ì„ ì–¸ ë° nullë¡œ ì´ˆê¸°í™”
+		 * 2. ë°˜ë³µë¬¸ì„ í†µí•´ bookListì˜ ì±…ë“¤ ì¤‘ ì±…ëª…ì´ ì „ë‹¬ë°›ì€ titleê³¼ ë™ì¼í•˜ê³ , ì €ìëª…ì´ ì „ë‹¬ë°›ì€ authorì™€ ë™ì¼í•œ ê²½ìš° 
+		 *    í•´ë‹¹ ì¸ë±ìŠ¤ì˜ ë„ì„œ "ì‚­ì œ"í•˜ê³  ë¹ ì ¸ë‚˜ê°€ê¸° (ì´ë•Œ í•´ë‹¹ ì¸ë±ìŠ¤ ë„ì„œë¥¼ removeì— ëŒ€ì…)
 		 * 
-		 * 3. removeÀÇ ÁÖ¼Ò °ª ¹İÈ¯ 
+		 * 3. removeì˜ ì£¼ì†Œ ê°’ ë°˜í™˜ 
 		 */
 		
-		return null;   // ÀÌ ºÎºĞ ¼öÁ¤ÇØ¾ßµÇ¿ä~! ¿ì¼±Àº null·Î ÇØ³ù¾î¿ä
+		Book remove = null;
+		for(int i = 0; i < bookList.size(); i++) {
+			if(title.equals(bookList.get(i).getTitle()) && author.equals(bookList.get(i).getAuthor())) {
+				remove = bookList.get(i);
+				bookList.remove(i);
+			}
+		}
+		
+		return remove;   // ì´ ë¶€ë¶„ ìˆ˜ì •í•´ì•¼ë˜ìš”~! ìš°ì„ ì€ nullë¡œ í•´ë†¨ì–´ìš”
 	}
 	
 	
