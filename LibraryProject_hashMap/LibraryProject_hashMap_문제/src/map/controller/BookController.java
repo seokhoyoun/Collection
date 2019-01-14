@@ -2,6 +2,8 @@ package map.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import map.model.vo.Book;
 
@@ -28,6 +30,8 @@ public class BookController {
 		 * 1. 전달받은 bk를 bookMap에 키값(count)과 함께 "추가 "하기
 		 * 2. count 증가시켜주기
 		 */
+		
+		bookMap.put(count++, bk);
 	}
 	
 	
@@ -36,7 +40,7 @@ public class BookController {
 		 * 1. 해당 bookMap의 주소 값 반환
 		 */
 		
-		return null; 	// 이 부분 수정해야되요~! 우선은 null로 해놨어요
+		return bookMap; 	// 이 부분 수정해야되요~! 우선은 null로 해놨어요
 	}
 	
 	
@@ -50,8 +54,16 @@ public class BookController {
 		 * 
 		 * 3. searchMap의 주소 값 반환
 		 */
-		
-		return null;   // 이 부분 수정해야되요~! 우선은 null로 해놨어요
+		HashMap<Integer,Book> hm = new HashMap<>();
+		Iterator<Entry<Integer,Book>> it = bookMap.entrySet().iterator();
+		int i = 0;
+		while(it.hasNext()) {
+			Book b = it.next().getValue();
+			if(b.getTitle().contains(keyword)) {
+				hm.put(i++, b);
+			}
+		}
+		return hm;   // 이 부분 수정해야되요~! 우선은 null로 해놨어요
 	}
 	
 	public Book deleteBook(int bNo) {
@@ -61,8 +73,10 @@ public class BookController {
 		 * 
 		 * 3. remove의 주소 값 반환 
 		 */
-		
-		return null;   // 이 부분 수정해야되요~! 우선은 null로 해놨어요
+		Book remove = null;
+		remove = bookMap.get(bNo);
+		bookMap.remove(bNo);
+		return remove;   // 이 부분 수정해야되요~! 우선은 null로 해놨어요
 	}
 	
 	

@@ -99,7 +99,8 @@ public class BookMenu {
 		else {
 			Iterator<Integer> it = hm.keySet().iterator();
 			while(it.hasNext()) {
-				System.out.println(it.next());
+				int key = it.next();
+				System.out.println(hm.get(key));
 			}
 		}
 		
@@ -132,7 +133,10 @@ public class BookMenu {
 		else {
 			Iterator<Entry<Integer,Book>> it = hm.entrySet().iterator();
 			while(it.hasNext()) {
-				System.out.println(it.next().getValue());
+				Entry<Integer,Book> ent = it.next();
+				System.out.println("도서번호 : "+ent.getKey());
+				System.out.println("도서명 : "+ent.getValue().getTitle());
+				System.out.println("저자명 : "+ent.getValue().getAuthor());
 			}
 		}
 		
@@ -154,7 +158,16 @@ public class BookMenu {
 		 * 3_2. remove가 존재하지 않은 경우 -->  "삭제할 도서를 찾지 못했습니다." 라는 알람 문구 출력
 		 *  
 		 */
-
+		System.out.println("삭제할 도서번호 : ");
+		int bNo = sc.nextInt();
+		Book remove = bc.deleteBook(bNo);
+		if(remove != null) {
+			System.out.println("성공적으로 삭제되었습니다.");
+		}
+		else {
+			System.out.println("삭제할 도서를 찾지 못했습니다.");
+		}
+		
 		// 위의 순서대로 작성해보세요 ~ 이제 거의 끝났어요~!!
 		
 	}
