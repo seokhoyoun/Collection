@@ -12,23 +12,23 @@ import map.model.vo.Book;
 
 public class BookMenu {
 
-	private BookController bc = new BookController(); // BookControllerÀÇ ¸Ş¼ÒµåµéÀ» »ç¿ëÇÏ±â À§ÇÑ ·¹ÆÛ·±½º
-	Scanner sc = new Scanner(System.in); // »ç¿ëÀÚ¿¡°Ô Å°º¸µå·Î °ªÀ» ÀÔ·Â ¹Ş±â À§ÇÑ Scanner °´Ã¼
+	private BookController bc = new BookController(); // BookControllerì˜ ë©”ì†Œë“œë“¤ì„ ì‚¬ìš©í•˜ê¸° ìœ„í•œ ë ˆí¼ëŸ°ìŠ¤
+	Scanner sc = new Scanner(System.in); // ì‚¬ìš©ìì—ê²Œ í‚¤ë³´ë“œë¡œ ê°’ì„ ì…ë ¥ ë°›ê¸° ìœ„í•œ Scanner ê°ì²´
 	
 	public void mainMenu() {
 		
 		System.out.println("== Welcome KH Library ==");
 		
 		while(true) {
-			System.out.println("===== ¸ŞÀÎ ¸Ş´º ====");
-			System.out.println("1. »õ µµ¼­ Ãß°¡");
-			System.out.println("2. µµ¼­ ÀüÃ¼ Á¶È¸");
-			System.out.println("3. µµ¼­ °Ë»ö Á¶È¸");
-			System.out.println("4. µµ¼­ »èÁ¦ÇÏ±â");
+			System.out.println("===== ë©”ì¸ ë©”ë‰´ ====");
+			System.out.println("1. ìƒˆ ë„ì„œ ì¶”ê°€");
+			System.out.println("2. ë„ì„œ ì „ì²´ ì¡°íšŒ");
+			System.out.println("3. ë„ì„œ ê²€ìƒ‰ ì¡°íšŒ");
+			System.out.println("4. ë„ì„œ ì‚­ì œí•˜ê¸°");
 			
-			System.out.println("0. ÇÁ·Î±×·¥ Á¾·áÇÏ±â");
+			System.out.println("0. í”„ë¡œê·¸ë¨ ì¢…ë£Œí•˜ê¸°");
 			
-			System.out.print("¸Ş´º ¼±ÅÃ : ");
+			System.out.print("ë©”ë‰´ ì„ íƒ : ");
 			int menu = sc.nextInt();
 			sc.nextLine();
 			
@@ -37,85 +37,125 @@ public class BookMenu {
 			case 2: selectMap(); break;
 			case 3: searchBook(); break;
 			case 4: deleteBook(); break;
-			case 0: System.out.println("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù."); return;
-			default: System.out.println("Àß¸øÀÔ·ÂÇÏ¿´½À´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä"); break;
+			case 0: System.out.println("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."); return;
+			default: System.out.println("ì˜ëª»ì…ë ¥í•˜ì˜€ìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”"); break;
 			}
 		}
 		
 	}
 	
 	
-	// 1. »õ µµ¼­ Ãß°¡¿ë view ¸Ş¼Òµå
+	// 1. ìƒˆ ë„ì„œ ì¶”ê°€ìš© view ë©”ì†Œë“œ
 	public void insertBook() {
 		/*
-		 * 1. µµ¼­¸í ÀÔ·Â¹Ş±â (String title)
-		 * 2. ÀúÀÚ¸í ÀÔ·Â¹Ş±â (String author)
-		 * 3. Àå¸£ ÀÔ·Â¹Ş±â (int category) --> ¼ıÀÚ·Î ÀÔ·Â¹Ş±â (1.ÀÎ¹® / 2.ÀÚ¿¬°úÇĞ / 3.ÀÇ·á / 4.±âÅ¸)
-		 * 4. °¡°İ ÀÔ·Â¹Ş±â (int price)
-		 * 5. ¸Å°³º¯¼ö »ı¼ºÀÚ¸¦ ÀÌ¿ëÇÏ¿© Book °´Ã¼ »ı¼º (´Ü, °´Ã¼ »ı¼º ½Ã Àå¸£ ¹øÈ£º°·Î Á¶°Ç½Ä ÀÌ¿ëÇØ¼­ Àå¸£¹øÈ£°¡ ¾Æ´Ñ Àå¸£¸íÀ¸·Î °ª ³Ñ°Ü¾ßµÇ¿ä!)
+		 * 1. ë„ì„œëª… ì…ë ¥ë°›ê¸° (String title)
+		 * 2. ì €ìëª… ì…ë ¥ë°›ê¸° (String author)
+		 * 3. ì¥ë¥´ ì…ë ¥ë°›ê¸° (int category) --> ìˆ«ìë¡œ ì…ë ¥ë°›ê¸° (1.ì¸ë¬¸ / 2.ìì—°ê³¼í•™ / 3.ì˜ë£Œ / 4.ê¸°íƒ€)
+		 * 4. ê°€ê²© ì…ë ¥ë°›ê¸° (int price)
+		 * 5. ë§¤ê°œë³€ìˆ˜ ìƒì„±ìë¥¼ ì´ìš©í•˜ì—¬ Book ê°ì²´ ìƒì„± (ë‹¨, ê°ì²´ ìƒì„± ì‹œ ì¥ë¥´ ë²ˆí˜¸ë³„ë¡œ ì¡°ê±´ì‹ ì´ìš©í•´ì„œ ì¥ë¥´ë²ˆí˜¸ê°€ ì•„ë‹Œ ì¥ë¥´ëª…ìœ¼ë¡œ ê°’ ë„˜ê²¨ì•¼ë˜ìš”!)
 		 * 
-		 * 6. bc(BookController)ÀÇ insertBookÀ¸·Î À§ÀÇ Book °´Ã¼ Àü´Ş
+		 * 6. bc(BookController)ì˜ insertBookìœ¼ë¡œ ìœ„ì˜ Book ê°ì²´ ì „ë‹¬
 		 * 
 		 */
+		System.out.println("ë„ì„œëª… ì…ë ¥ : ");
+		String title = sc.nextLine();
+		System.out.println("ì €ìëª… ì…ë ¥ : ");
+		String author = sc.nextLine();
+		System.out.println("ì¥ë¥´ëª… ì…ë ¥ : ");
+		int category = sc.nextInt();
+		String scg = null;
+		switch(category) {
+		case 1 : scg = "ì¸ë¬¸"; break;
+		case 2 : scg = "ìì—°ê³¼í•™"; break;
+		case 3 : scg = "ì˜ë£Œ"; break;
+		case 4 : scg = "ê¸°íƒ€"; break;
+		default: System.out.println("1~4ë²ˆë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+		}
+		System.out.println("ê°€ê²© ì…ë ¥ : ");
+		int price = sc.nextInt();
+		bc.insertBook(new Book(title,author,scg,price));
 		
-		// À§ÀÇ ¼ø¼­´ë·Î ÀÛ¼ºÇØº¸¼¼¿ë ~ Âô±ß^^
+		// ìœ„ì˜ ìˆœì„œëŒ€ë¡œ ì‘ì„±í•´ë³´ì„¸ìš© ~ ì°¡ê¸‹^^
 		
 	}
 		
 		
-	// 2. µµ¼­ ÀüÃ¼¿ë view ¸Ş¼Òµå
+	// 2. ë„ì„œ ì „ì²´ìš© view ë©”ì†Œë“œ
 	public void selectMap() {
 		/*
-		 * 1. bc(BookController)ÀÇ selectMap() ¸Ş¼Òµå¸¦ È£Ãâ ÈÄ
-		 *    --> °á°ú °ªÀ» ÀÓÀÇÀÇ ¸Ê(HashMap<Integer, Book> bookMap)¿¡ ´ëÀÔ
+		 * 1. bc(BookController)ì˜ selectMap() ë©”ì†Œë“œë¥¼ í˜¸ì¶œ í›„
+		 *    --> ê²°ê³¼ ê°’ì„ ì„ì˜ì˜ ë§µ(HashMap<Integer, Book> bookMap)ì— ëŒ€ì…
 		 * 
-		 * 2. Á¶°Ç½Ä ÀÌ¿ëÇØ¼­ 
-		 * 2_1. bookMap°¡ "ºñ¾îÀÖ´Â °æ¿ì"    -->   "Á¸ÀçÇÏ´Â µµ¼­°¡ ¾ø½À´Ï´Ù." ¶ó´Â ¾Ë¶÷ ¹®±¸ Ãâ·Â
-		 * 2_2. bookMap°¡ "ºñ¾îÀÖÁö ¾ÊÀº °æ¿ì" -->   keySet() ¶Ç´Â entrySet()À» ÅëÇØ bookMap ¾ÈÀÇ Book °´Ã¼µé Ãâ·Â
+		 * 2. ì¡°ê±´ì‹ ì´ìš©í•´ì„œ 
+		 * 2_1. bookMapê°€ "ë¹„ì–´ìˆëŠ” ê²½ìš°"    -->   "ì¡´ì¬í•˜ëŠ” ë„ì„œê°€ ì—†ìŠµë‹ˆë‹¤." ë¼ëŠ” ì•ŒëŒ ë¬¸êµ¬ ì¶œë ¥
+		 * 2_2. bookMapê°€ "ë¹„ì–´ìˆì§€ ì•Šì€ ê²½ìš°" -->   keySet() ë˜ëŠ” entrySet()ì„ í†µí•´ bookMap ì•ˆì˜ Book ê°ì²´ë“¤ ì¶œë ¥
 		 * 
 		 */
 		
-		// À§ÀÇ ¼ø¼­´ë·Î ÀÛ¼ºÇØº¸¼¼¿ä ~ È­ÀÌÆÃ^^
+		HashMap<Integer, Book> hm = bc.selectMap();
+		if(hm.isEmpty()) {
+			System.out.println("ì¡´ì¬í•˜ëŠ” ë„ì„œê°€ ì—†ìŠµë‹ˆë‹¤.");
+		}
+		else {
+			Iterator<Integer> it = hm.keySet().iterator();
+			while(it.hasNext()) {
+				System.out.println(it.next());
+			}
+		}
+		
+		// ìœ„ì˜ ìˆœì„œëŒ€ë¡œ ì‘ì„±í•´ë³´ì„¸ìš” ~ í™”ì´íŒ…^^
 	}
 	
 	
-	// 3. µµ¼­ °Ë»ö¿ë view ¸Ş¼Òµå
+	// 3. ë„ì„œ ê²€ìƒ‰ìš© view ë©”ì†Œë“œ
 	public void searchBook() {
 		/*
-		 * 1. °Ë»öÇÒ µµ¼­¸í Å°¿öµå·Î ÀÔ·Â¹Ş±â (String keyword) 
-		 * 2. bc(BookController)ÀÇ searchBook() ¸Ş¼Òµå·Î À§ÀÇ keyword °ª Àü´Ş ÈÄ  
-		 *    --> °á°ú °ªÀ» ÀÓÀÇÀÇ ¸®½ºÆ®(HashMap<Integer, Book> searchMap)¿¡ ´ëÀÔ
+		 * 1. ê²€ìƒ‰í•  ë„ì„œëª… í‚¤ì›Œë“œë¡œ ì…ë ¥ë°›ê¸° (String keyword) 
+		 * 2. bc(BookController)ì˜ searchBook() ë©”ì†Œë“œë¡œ ìœ„ì˜ keyword ê°’ ì „ë‹¬ í›„  
+		 *    --> ê²°ê³¼ ê°’ì„ ì„ì˜ì˜ ë¦¬ìŠ¤íŠ¸(HashMap<Integer, Book> searchMap)ì— ëŒ€ì…
 		 *    
-		 *    ** ¿Ö °á°ú °ªÀÌ ÇÑ µµ¼­ÀÇ Book °´Ã¼°¡ ¾Æ´Ï¶ó ¸ÊÀÎ°¡¿ä??
-		 *    	  »ç½Ç.. º¸ÅëÀÇ ÇÁ·Î±×·¥µéÀÌ °Ë»öÀ» ÇÒ ¶§ Ç® ³×ÀÓÀ» ÃÄ¼­ °Ë»öÇÏÁö ¾Ê´Â´Ù. º¸Åë Å°¿öµå·Î °Ë»öÇÑ´Ù
-		 *       Áï, ±× Å°¿öµå¸¦ Æ÷ÇÔÇÑ °á°ú°¡ ÇÏ³ª°¡ ¾Æ´Ï¶ó ¿©·¯°³ÀÏ ¼ö ÀÖ±â ¶§¹®¿¡ ¸®½ºÆ®·Î ¹Ş¾Æº¸ÀÚ~!
+		 *    ** ì™œ ê²°ê³¼ ê°’ì´ í•œ ë„ì„œì˜ Book ê°ì²´ê°€ ì•„ë‹ˆë¼ ë§µì¸ê°€ìš”??
+		 *    	  ì‚¬ì‹¤.. ë³´í†µì˜ í”„ë¡œê·¸ë¨ë“¤ì´ ê²€ìƒ‰ì„ í•  ë•Œ í’€ ë„¤ì„ì„ ì³ì„œ ê²€ìƒ‰í•˜ì§€ ì•ŠëŠ”ë‹¤. ë³´í†µ í‚¤ì›Œë“œë¡œ ê²€ìƒ‰í•œë‹¤
+		 *       ì¦‰, ê·¸ í‚¤ì›Œë“œë¥¼ í¬í•¨í•œ ê²°ê³¼ê°€ í•˜ë‚˜ê°€ ì•„ë‹ˆë¼ ì—¬ëŸ¬ê°œì¼ ìˆ˜ ìˆê¸° ë•Œë¬¸ì— ë¦¬ìŠ¤íŠ¸ë¡œ ë°›ì•„ë³´ì~!
 		 * 
-		 * 3. Á¶°Ç½Ä ÀÌ¿ëÇØ¼­
-		 * 3_1. searchMap°¡ "ºñ¾îÀÖ´Â °æ¿ì"    -->  "°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù." ¶ó´Â ¾Ë¶÷ ¹®±¸ Ãâ·Â
-		 * 3_2. searchMap°¡ "ºñ¾îÀÖÁö ¾ÊÀº °æ¿ì" -->  ¹İº¹ÀÚÀ» ÅëÇØ searchMap ¾ÈÀÇ Book °´Ã¼µé Ãâ·Â
+		 * 3. ì¡°ê±´ì‹ ì´ìš©í•´ì„œ
+		 * 3_1. searchMapê°€ "ë¹„ì–´ìˆëŠ” ê²½ìš°"    -->  "ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤." ë¼ëŠ” ì•ŒëŒ ë¬¸êµ¬ ì¶œë ¥
+		 * 3_2. searchMapê°€ "ë¹„ì–´ìˆì§€ ì•Šì€ ê²½ìš°" -->  ë°˜ë³µìì„ í†µí•´ searchMap ì•ˆì˜ Book ê°ì²´ë“¤ ì¶œë ¥
 		 * 
 		 */
-
-		// À§ÀÇ ¼ø¼­´ë·Î ÀÛ¼ºÇØº¸¼¼¿ä ~ ¾ó¸¶ ¾È³²¾Ò¾î¿ä~!!
+		System.out.println("ê²€ìƒ‰í•  ë„ì„œëª… : " );
+		String key = sc.nextLine();
+		HashMap<Integer, Book> hm = bc.searchBook(key);
+		if(hm.isEmpty()) {
+			System.out.println("ê²€ìƒ‰ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
+		}
+		else {
+			Iterator<Entry<Integer,Book>> it = hm.entrySet().iterator();
+			while(it.hasNext()) {
+				System.out.println(it.next().getValue());
+			}
+		}
+		
+		// ìœ„ì˜ ìˆœì„œëŒ€ë¡œ ì‘ì„±í•´ë³´ì„¸ìš” ~ ì–¼ë§ˆ ì•ˆë‚¨ì•˜ì–´ìš”~!!
 		
 	}
 	
 	
-	// 4. µµ¼­ »èÁ¦¿ë view ¸Ş¼Òµå
+	// 4. ë„ì„œ ì‚­ì œìš© view ë©”ì†Œë“œ
 	public void deleteBook() {
 		/*
-		 * 1. »èÁ¦ÇÒ µµ¼­¹øÈ£ ÀÔ·Â¹Ş±â (int bNo)
+		 * 1. ì‚­ì œí•  ë„ì„œë²ˆí˜¸ ì…ë ¥ë°›ê¸° (int bNo)
 		 *    
-		 * 2. bc(BookConroller)ÀÇ deleteBook() ¸Ş¼Òµå·Î À§ÀÇ bNo °ª Àü´Ş ÈÄ
-		 * 	  --> °á°ú °ªÀ» ÀÓÀÇÀÇ Book(Book remove)¿¡ ´ëÀÔ
+		 * 2. bc(BookConroller)ì˜ deleteBook() ë©”ì†Œë“œë¡œ ìœ„ì˜ bNo ê°’ ì „ë‹¬ í›„
+		 * 	  --> ê²°ê³¼ ê°’ì„ ì„ì˜ì˜ Book(Book remove)ì— ëŒ€ì…
 		 * 
-		 * 3. Á¶°Ç½Ä ÀÌ¿ëÇØ¼­
-		 * 3_1. remove°¡ Á¸ÀçÇÏ´Â °æ¿ì        -->  "¼º°øÀûÀ¸·Î ¼º°øÀûÀ¸·Î »èÁ¦µÇ¾ú½À´Ï´Ù." ¶ó´Â ¾Ë¶÷ ¹®±¸ Ãâ·Â
-		 * 3_2. remove°¡ Á¸ÀçÇÏÁö ¾ÊÀº °æ¿ì -->  "»èÁ¦ÇÒ µµ¼­¸¦ Ã£Áö ¸øÇß½À´Ï´Ù." ¶ó´Â ¾Ë¶÷ ¹®±¸ Ãâ·Â
+		 * 3. ì¡°ê±´ì‹ ì´ìš©í•´ì„œ
+		 * 3_1. removeê°€ ì¡´ì¬í•˜ëŠ” ê²½ìš°        -->  "ì„±ê³µì ìœ¼ë¡œ ì„±ê³µì ìœ¼ë¡œ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤." ë¼ëŠ” ì•ŒëŒ ë¬¸êµ¬ ì¶œë ¥
+		 * 3_2. removeê°€ ì¡´ì¬í•˜ì§€ ì•Šì€ ê²½ìš° -->  "ì‚­ì œí•  ë„ì„œë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤." ë¼ëŠ” ì•ŒëŒ ë¬¸êµ¬ ì¶œë ¥
 		 *  
 		 */
 
-		// À§ÀÇ ¼ø¼­´ë·Î ÀÛ¼ºÇØº¸¼¼¿ä ~ ÀÌÁ¦ °ÅÀÇ ³¡³µ¾î¿ä~!!
+		// ìœ„ì˜ ìˆœì„œëŒ€ë¡œ ì‘ì„±í•´ë³´ì„¸ìš” ~ ì´ì œ ê±°ì˜ ëë‚¬ì–´ìš”~!!
 		
 	}
 }

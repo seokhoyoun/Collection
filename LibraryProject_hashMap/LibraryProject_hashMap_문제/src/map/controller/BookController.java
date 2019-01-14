@@ -7,16 +7,16 @@ import map.model.vo.Book;
 
 public class BookController {
 	
-	// µµ¼­µéÀ»  ´ã°í ÀÖ´Â bookMap
+	// ë„ì„œë“¤ì„  ë‹´ê³  ìˆëŠ” bookMap
 	private HashMap<Integer, Book> bookMap = new HashMap<>();
-	int count = 0;	// Å°°ªÀ¸·Î »ç¿ëµÉ º¯¼ö
+	int count = 0;	// í‚¤ê°’ìœ¼ë¡œ ì‚¬ìš©ë  ë³€ìˆ˜
 	
 	{
-		// ÃÊ±â°ª 4°³Á¤µµ Ãß°¡
-		bookMap.put(1, new Book("ÀÚ¹ÙÀÇ Á¤¼®", "È«±æµ¿", "±âÅ¸", 20000));
-		bookMap.put(2, new Book("C¾ğ¾î", "±è¸»¶Ë", "±âÅ¸", 15000));
-		bookMap.put(3, new Book("±â¼úÇâ»ó µµ¿òÀÌ µÇ¾ú³ª¿ä", "°­º¸¶÷", "ÀÎ¹®", 17500));
-		bookMap.put(4, new Book("¼ö°í¸¹¾Ò¾î¿ä ¿©·¯ºĞ", "KH", "ÀÇ·á", 10000));
+		// ì´ˆê¸°ê°’ 4ê°œì •ë„ ì¶”ê°€
+		bookMap.put(1, new Book("ìë°”ì˜ ì •ì„", "í™ê¸¸ë™", "ê¸°íƒ€", 20000));
+		bookMap.put(2, new Book("Cì–¸ì–´", "ê¹€ë§ë˜¥", "ê¸°íƒ€", 15000));
+		bookMap.put(3, new Book("ê¸°ìˆ í–¥ìƒ ë„ì›€ì´ ë˜ì—ˆë‚˜ìš”", "ê°•ë³´ëŒ", "ì¸ë¬¸", 17500));
+		bookMap.put(4, new Book("ìˆ˜ê³ ë§ì•˜ì–´ìš” ì—¬ëŸ¬ë¶„", "KH", "ì˜ë£Œ", 10000));
 		
 		count = 5;
 	}
@@ -25,44 +25,44 @@ public class BookController {
 	
 	public void insertBook(Book bk) {
 		/*
-		 * 1. Àü´Ş¹ŞÀº bk¸¦ bookMap¿¡ Å°°ª(count)°ú ÇÔ²² "Ãß°¡ "ÇÏ±â
-		 * 2. count Áõ°¡½ÃÄÑÁÖ±â
+		 * 1. ì „ë‹¬ë°›ì€ bkë¥¼ bookMapì— í‚¤ê°’(count)ê³¼ í•¨ê»˜ "ì¶”ê°€ "í•˜ê¸°
+		 * 2. count ì¦ê°€ì‹œì¼œì£¼ê¸°
 		 */
 	}
 	
 	
 	public HashMap<Integer, Book> selectMap(){
 		/*
-		 * 1. ÇØ´ç bookMapÀÇ ÁÖ¼Ò °ª ¹İÈ¯
+		 * 1. í•´ë‹¹ bookMapì˜ ì£¼ì†Œ ê°’ ë°˜í™˜
 		 */
 		
-		return null; 	// ÀÌ ºÎºĞ ¼öÁ¤ÇØ¾ßµÇ¿ä~! ¿ì¼±Àº null·Î ÇØ³ù¾î¿ä
+		return null; 	// ì´ ë¶€ë¶„ ìˆ˜ì •í•´ì•¼ë˜ìš”~! ìš°ì„ ì€ nullë¡œ í•´ë†¨ì–´ìš”
 	}
 	
 	
 	public HashMap<Integer, Book> searchBook(String keyword){
 		/*
-		 * 1. °Ë»ö °á°ú¸¦ ´ã¾ÆÁÙ ÀÓÀÇÀÇ ¸Ê(HashMap<Integer, Book> searchMap) ¼±¾ğ ¹× »ı¼º
-		 * 2. ¹İº¹ÀÚÀ» ÅëÇØ bookMapÀÇ Ã¥µé Áß Ã¥¸í¿¡ Àü´Ş¹ŞÀº keyword°¡ "Æ÷ÇÔ µÇ¾îÀÖ´Â °æ¿ì" --> HINT : Á¶°Ç½Ä ÀÛ¼ºÇÒ ¶§ String Å¬·¡½ºÀÇ contains ¸Ş¼Òµå »ç¿ëÇÏ¸é µÇ°ÚÁÒ?
-		 *    searchMap¿¡ ÇØ´ç Ã¥ "Ãß°¡"ÇÏ±â 
+		 * 1. ê²€ìƒ‰ ê²°ê³¼ë¥¼ ë‹´ì•„ì¤„ ì„ì˜ì˜ ë§µ(HashMap<Integer, Book> searchMap) ì„ ì–¸ ë° ìƒì„±
+		 * 2. ë°˜ë³µìì„ í†µí•´ bookMapì˜ ì±…ë“¤ ì¤‘ ì±…ëª…ì— ì „ë‹¬ë°›ì€ keywordê°€ "í¬í•¨ ë˜ì–´ìˆëŠ” ê²½ìš°" --> HINT : ì¡°ê±´ì‹ ì‘ì„±í•  ë•Œ String í´ë˜ìŠ¤ì˜ contains ë©”ì†Œë“œ ì‚¬ìš©í•˜ë©´ ë˜ê² ì£ ?
+		 *    searchMapì— í•´ë‹¹ ì±… "ì¶”ê°€"í•˜ê¸° 
 		 *    
-		 *    ** keySet¹æ¹ıµµ ÇØº¸½Ã°í entrySet¹æ¹ıµµ ÇØº¸¼¼¿ä~!!
+		 *    ** keySetë°©ë²•ë„ í•´ë³´ì‹œê³  entrySetë°©ë²•ë„ í•´ë³´ì„¸ìš”~!!
 		 * 
-		 * 3. searchMapÀÇ ÁÖ¼Ò °ª ¹İÈ¯
+		 * 3. searchMapì˜ ì£¼ì†Œ ê°’ ë°˜í™˜
 		 */
 		
-		return null;   // ÀÌ ºÎºĞ ¼öÁ¤ÇØ¾ßµÇ¿ä~! ¿ì¼±Àº null·Î ÇØ³ù¾î¿ä
+		return null;   // ì´ ë¶€ë¶„ ìˆ˜ì •í•´ì•¼ë˜ìš”~! ìš°ì„ ì€ nullë¡œ í•´ë†¨ì–´ìš”
 	}
 	
 	public Book deleteBook(int bNo) {
 		/*
-		 * 1. »èÁ¦µÈ µµ¼­¸¦ ´ãÀ» Book°´Ã¼(Book remove) ¼±¾ğ ¹× null·Î ÃÊ±âÈ­
-		 * 2. bookMap¿¡ Àü´Ş¹ŞÀº bNo(Å° °ª)À» ÀÌ¿ëÇÏ¿© »èÁ¦ (ÀÌ¶§ ÇØ´ç Å° °ªÀÇ µµ¼­¸¦ remove¿¡ ´ëÀÔ)
+		 * 1. ì‚­ì œëœ ë„ì„œë¥¼ ë‹´ì„ Bookê°ì²´(Book remove) ì„ ì–¸ ë° nullë¡œ ì´ˆê¸°í™”
+		 * 2. bookMapì— ì „ë‹¬ë°›ì€ bNo(í‚¤ ê°’)ì„ ì´ìš©í•˜ì—¬ ì‚­ì œ (ì´ë•Œ í•´ë‹¹ í‚¤ ê°’ì˜ ë„ì„œë¥¼ removeì— ëŒ€ì…)
 		 * 
-		 * 3. removeÀÇ ÁÖ¼Ò °ª ¹İÈ¯ 
+		 * 3. removeì˜ ì£¼ì†Œ ê°’ ë°˜í™˜ 
 		 */
 		
-		return null;   // ÀÌ ºÎºĞ ¼öÁ¤ÇØ¾ßµÇ¿ä~! ¿ì¼±Àº null·Î ÇØ³ù¾î¿ä
+		return null;   // ì´ ë¶€ë¶„ ìˆ˜ì •í•´ì•¼ë˜ìš”~! ìš°ì„ ì€ nullë¡œ í•´ë†¨ì–´ìš”
 	}
 	
 	
