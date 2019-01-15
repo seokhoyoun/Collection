@@ -16,10 +16,12 @@ public class Person {
 		return name + ", " + age+"세";
 	}
 	
+	
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(name,age);
-	}
+        return name.hashCode() + (age % 7);
+    }
 	
 	@Override
 	public boolean equals(Object obj) {
